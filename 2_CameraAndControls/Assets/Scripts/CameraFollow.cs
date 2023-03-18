@@ -8,6 +8,9 @@ public class CameraFollow : MonoBehaviour
     float cameraSpeed = 10.0f;
 
     [SerializeField]
+    float rotationSpeed = 2.0f;
+
+    [SerializeField]
     Transform idealCameraPosition;
 
     [SerializeField]
@@ -24,8 +27,10 @@ public class CameraFollow : MonoBehaviour
     void LateUpdate()
     {
         transform.position = Vector3.MoveTowards(transform.position, idealCameraPosition.position, cameraSpeed *Time.deltaTime);
-        transform.LookAt(idealCameraTarget);
-        //Vector3 newDirection = Vector3.Normalize(idealCameraTarget.position - transform.position);
-        //transform.Rotate(Vector3.RotateTowards(transform.forward, newDirection, 1.0f, 1.0f));
+
+        Vector3 targetDirection = Vector3.Normalize(idealCameraTarget.position - transform.position);
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotationSpeed * Time.deltaTime, 0.0f);
+
+        transform.rotation = Quaternion.LookRotation(newDirection);   
     }
 }
