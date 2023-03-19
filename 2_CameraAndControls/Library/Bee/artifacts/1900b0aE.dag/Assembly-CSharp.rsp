@@ -347,7 +347,9 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/CameraFollow.cs"
 "Assets/Scripts/Orbiting.cs"
+"Assets/Scripts/PhysicsController.cs"
 "Assets/Scripts/PlatformLurping.cs"
+"Assets/Scripts/SimpleCameraFollow.cs"
 "Assets/Scripts/SimpleController.cs"
 -langversion:9.0
 
