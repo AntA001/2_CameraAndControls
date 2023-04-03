@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class PlatformLurping : MonoBehaviour
 {
@@ -20,11 +17,16 @@ public class PlatformLurping : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        delta = 0.0f;
+
     }
     // Update is called once per frame
     void Update()
     {
+        if (delta > 0.9f)
+            delta = 0.9f;
+        if (delta < 0.1f)
+            delta = 0.1f;
+
         transform.position = (1 - delta) * starting.position + delta * ending.position;
         delta = Mathf.Cos(Time.time * speed) * 0.5f + 0.5f;
     }
